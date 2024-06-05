@@ -52,9 +52,9 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 from google.colab import drive
-drive.mount('/content/drive')
+#drive.mount('/content/drive')
 import os
-os.chdir("/content/drive/MyDrive/TFG/cod TSVM/Twin-SVM-master")
+#os.chdir("/content/drive/MyDrive/TFG/cod TSVM/Twin-SVM-master")
 from TVSVM import TwinSVMClassifier
 from sklearn import preprocessing
 from sklearn.base import BaseEstimator, ClassifierMixin
@@ -95,8 +95,8 @@ from sklearn.tree import DecisionTreeRegressor
 """## CARGAMOS DATASET"""
 
 # Cargar el dataset
-datosneu = '/content/drive/MyDrive/TFG/TFG Alejandra/datos/Neurological-complications-after-cardiac-surgery/Database.xlsx'#
-#datosneu = 'Database.xlsx'
+#datosneu = '/content/drive/MyDrive/TFG/TFG Alejandra/datos/Neurological-complications-after-cardiac-surgery/Database.xlsx'#
+datosneu = 'Database.xlsx'
 dfneu= pd.read_excel(datosneu)
 
 # Explorar el dataframe
@@ -341,6 +341,81 @@ axes = axes.flatten()
 # Generar los histogramas
 for i, name in enumerate(numeric_vars.columns):
     axes[i].hist(dfneu[name], bins=30, alpha=0.75, edgecolor='black')
+    axes[i].set_title(name, fontsize=12)  # Reducir el tamaño de la fuente del título
+    axes[i].tick_params(axis='both', which='major', labelsize=8)  # Reducir el tamaño de la fuente de las etiquetas de los ejes
+
+# Eliminar subplots vacíos si hay menos gráficos que subplots creados
+for j in range(num_vars, len(axes)):
+    fig.delaxes(axes[j])
+
+# Ajustar el layout para evitar superposición
+plt.tight_layout()
+
+# Mostrar los gráficos
+plt.show()
+
+# Seleccionar las columnas que son numéricas
+numeric_vars = dfneu.select_dtypes(include=['number'])
+
+# Configurar el layout de los gráficos
+num_vars = len(numeric_vars.columns)
+nrows = 4
+fig, axes = plt.subplots(nrows=nrows, ncols=4, figsize=(9, 10))  # Reducir el tamaño de la figura total
+axes = axes.flatten()
+
+# Generar los histogramas
+for i, name in enumerate(numeric_vars.columns[0:16]):
+    axes[i].hist(dfneu[name], bins=20, alpha=0.75, edgecolor='black')
+    axes[i].set_title(name, fontsize=12)  # Reducir el tamaño de la fuente del título
+    axes[i].tick_params(axis='both', which='major', labelsize=8)  # Reducir el tamaño de la fuente de las etiquetas de los ejes
+
+# Eliminar subplots vacíos si hay menos gráficos que subplots creados
+for j in range(num_vars, len(axes)):
+    fig.delaxes(axes[j])
+
+# Ajustar el layout para evitar superposición
+plt.tight_layout()
+
+# Mostrar los gráficos
+plt.show()
+
+# Seleccionar las columnas que son numéricas
+numeric_vars = dfneu.select_dtypes(include=['number'])
+
+# Configurar el layout de los gráficos
+num_vars = len(numeric_vars.columns)
+nrows = 4
+fig, axes = plt.subplots(nrows=nrows, ncols=4, figsize=(9, 10))  # Reducir el tamaño de la figura total
+axes = axes.flatten()
+
+# Generar los histogramas
+for i, name in enumerate(numeric_vars.columns[16:32]):
+    axes[i].hist(dfneu[name], bins=20, alpha=0.75, edgecolor='black')
+    axes[i].set_title(name, fontsize=12)  # Reducir el tamaño de la fuente del título
+    axes[i].tick_params(axis='both', which='major', labelsize=8)  # Reducir el tamaño de la fuente de las etiquetas de los ejes
+
+# Eliminar subplots vacíos si hay menos gráficos que subplots creados
+for j in range(num_vars, len(axes)):
+    fig.delaxes(axes[j])
+
+# Ajustar el layout para evitar superposición
+plt.tight_layout()
+
+# Mostrar los gráficos
+plt.show()
+
+# Seleccionar las columnas que son numéricas
+numeric_vars = dfneu.select_dtypes(include=['number'])
+
+# Configurar el layout de los gráficos
+num_vars = len(numeric_vars.columns)
+nrows = 5
+fig, axes = plt.subplots(nrows=nrows, ncols=3, figsize=(9, 10))  # Reducir el tamaño de la figura total
+axes = axes.flatten()
+
+# Generar los histogramas
+for i, name in enumerate(numeric_vars.columns[32:48]):
+    axes[i].hist(dfneu[name], bins=20, alpha=0.75, edgecolor='black')
     axes[i].set_title(name, fontsize=12)  # Reducir el tamaño de la fuente del título
     axes[i].tick_params(axis='both', which='major', labelsize=8)  # Reducir el tamaño de la fuente de las etiquetas de los ejes
 
